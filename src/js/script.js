@@ -92,6 +92,7 @@
       thisProduct.formInputs = thisProduct.form.querySelectorAll(select.all.formInputs);
       thisProduct.cartButton = thisProduct.element.querySelector(select.menuProduct.cartButton);
       thisProduct.priceElem = thisProduct.element.querySelector(select.menuProduct.priceElem);
+      thisProduct.imageWrapper = thisProduct.element.querySelector(select.menuProduct.imageWrapper);
     }
 
     initAccordion(){
@@ -106,9 +107,9 @@
         /* prevent default action for event */
         event.preventDefault();
         /* find active product (product that has active class) */
-        /* [TO UNCOVER!!] const activeProduct = document.querySelector(select.all.menuProductsActive);
-        /* [TO DO!!] if there is active product and it's not thisProduct.element, remove class active from it */
-        /* if(activeProduct !== thisProduct.element){
+        const activeProduct = document.querySelector(select.all.menuProductsActive);
+        /* if there is active product and it's not thisProduct.element, remove class active from it */
+        if(activeProduct != thisProduct.element && activeProduct != null){
           activeProduct.classList.remove('active');
         }
 
