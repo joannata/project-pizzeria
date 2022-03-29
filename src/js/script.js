@@ -171,8 +171,25 @@
             }
             // check if the option is default
           } else if(option.default){
-              // reduce price variable
+              // reduce option price from variable
               price -= option.price;
+            
+          }
+
+          // find the image .paramId-optionId (category-option)
+          const optionImage = thisProduct.imageWrapper.querySelector('.paramId-optionId');
+
+          // check if the image is found
+          if(optionImage){
+
+            // check if the option is selected
+            if(optionSelected){
+              // if the answer is yes, then show the image (add class active)
+              optionImage.classList.add(classNames.menuProduct.imageVisible);
+              // if the answer is no, then hide the image (remove class active)
+            } else {
+              optionImage.classList.remove(classNames.menuProduct.imageVisible);
+            }
             
           }
         }
