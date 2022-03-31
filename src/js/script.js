@@ -160,12 +160,15 @@
 
         // for every option in this category
         for(let optionId in param.options) {
+
+          const optionSelected = formData[paramId] && formData[paramId].includes(optionId);
+
           // determine option value, e.g. optionId = 'olives', option = { label: 'Olives', price: 2, default: true }
           const option = param.options[optionId];
           console.log(optionId, option);
 
           // check if there is param with a name of paramId in formData and if it includes optionId
-          if(formData[paramId] && formData[paramId].includes(optionId)){
+          if(optionSelected){
             // check if the option is not default
             if(!option.default){
               //add option price to variable
@@ -178,14 +181,13 @@
             
           }
 
-          // [!! WRONG] find the image .paramId-optionId (category-option)
-          const optionImage = thisProduct.imageWrapper.querySelector('.product__images');
+          // find the image .paramId-optionId (category-option)
+          const optionImage = thisProduct.imageWrapper.querySelector('.' + paramId + '-' + optionId);
 
           // check if the image is found
           if(optionImage){
 
             // check if the option is selected
-            const optionSelected = formData[paramId] && formData[paramId].includes(optionId);
 
             if(optionSelected){
               // if the answer is yes, then show the image (add class active)
@@ -245,6 +247,16 @@
       thisWidget.input.value = thisWidget.value;
 
     }
+
+    initActions(){
+
+      thisWidget.input.addEventListener('change', function(){
+        thisWidget.setValue();
+      });
+
+      thisWidget.linkDecrease.addEventListener('click',)
+    }
+
   }
 
   const app = {
