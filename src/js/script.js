@@ -176,9 +176,8 @@
             }
             // check if the option is default
           } else if(option.default){
-              // reduce option price from variable
-              price -= option.price;
-            
+            // reduce option price from variable
+            price -= option.price;
           }
 
           // find the image .paramId-optionId (category-option)
@@ -219,6 +218,7 @@
 
       thisWidget.getElements(element);
       thisWidget.setValue(thisWidget.input.value);
+      thisWidget.initActions();
 
       console.log('AmountWidget:', thisWidget);
       console.log('constructor arguments:', element);
@@ -249,12 +249,22 @@
     }
 
     initActions(){
-
+      const thisWidget = this;
+      
       thisWidget.input.addEventListener('change', function(){
         thisWidget.setValue();
       });
 
-      thisWidget.linkDecrease.addEventListener('click',)
+      thisWidget.linkDecrease.addEventListener('click', function(event){
+        event.preventDefault();
+        thisWidget.setValue(thisWidget.value - 1);
+      });
+
+      thisWidget.linkIncrease.addEventListener('click', function(event){
+        event.preventDefault();
+        thisWidget.setValue(thisWidget.value + 1);
+      });
+
     }
 
   }
