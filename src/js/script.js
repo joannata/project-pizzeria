@@ -239,7 +239,8 @@
       const newValue = parseInt(value);
 
       /* TO DO: Add validation */
-      if(thisWidget.value !== newValue && !isNaN(newValue)){
+      // nie działa, mimo ustalonych wartości można ustawić liczby ujemne i większe od 10
+      if(thisWidget.value !== newValue && !isNaN(newValue) && newValue >= 0 && newValue <= 10){
         thisWidget.value = newValue;
       }
 
@@ -249,10 +250,11 @@
     }
 
     initActions(){
+    //kiedy w ilości zamówionych pizz wpisuję "ab", to wyskakuje "NaN" zamiast jakiejś liczby
       const thisWidget = this;
       
       thisWidget.input.addEventListener('change', function(){
-        thisWidget.setValue();
+        thisWidget.setValue(thisWidget.input.value);
       });
 
       thisWidget.linkDecrease.addEventListener('click', function(event){
