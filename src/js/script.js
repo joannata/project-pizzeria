@@ -199,6 +199,8 @@
           }
         }
       }
+      /* multiply price by amount */
+      price *= thisProduct.amountWidget.value;
 
       // update calculated price in the HTML
       thisProduct.priceElem.innerHTML = price;
@@ -208,8 +210,10 @@
       const thisProduct = this;
 
       thisProduct.amountWidget = new AmountWidget(thisProduct.amountWidgetElem);
+      thisProduct.amountWidgetElem.addEventListener('updated', function(){
+        thisProduct.processOrder();
+      });
     }
-
   }
 
   class AmountWidget{
@@ -231,6 +235,7 @@
       thisWidget.input = thisWidget.element.querySelector(select.widgets.amount.input);
       thisWidget.linkDecrease = thisWidget.element.querySelector(select.widgets.amount.linkDecrease);
       thisWidget.linkIncrease = thisWidget.element.querySelector(select.widgets.amount.linkIncrease);
+      thisWidget.value = settings.amountWidget.defaultValue;
     }
 
     setValue(value){
@@ -239,18 +244,16 @@
       const newValue = parseInt(value);
 
       /* TO DO: Add validation */
-      // nie działa, mimo ustalonych wartości można ustawić liczby ujemne i większe od 10
       if(thisWidget.value !== newValue && !isNaN(newValue) && newValue >= 0 && newValue <= 10){
         thisWidget.value = newValue;
       }
 
-      thisWidget.value = newValue;
       thisWidget.input.value = thisWidget.value;
+      thisWidget.announce();
 
     }
 
     initActions(){
-    //kiedy w ilości zamówionych pizz wpisuję "ab", to wyskakuje "NaN" zamiast jakiejś liczby
       const thisWidget = this;
       
       thisWidget.input.addEventListener('change', function(){
@@ -267,6 +270,13 @@
         thisWidget.setValue(thisWidget.value + 1);
       });
 
+    }
+
+    announce(){
+      const thisWidget = this;
+
+      const event = new Event('updated');
+      thisWidget.element.dispatchEvent(event);
     }
 
   }
