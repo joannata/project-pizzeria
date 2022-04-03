@@ -321,6 +321,7 @@
       thisCart.products = [];
 
       thisCart.getElements(element);
+      thisCart.initActions();
 
       console.log('new Cart', thisCart);
     }
@@ -329,8 +330,20 @@
       const thisCart = this;
 
       thisCart.dom = {};
-
       thisCart.dom.wrapper = element;
+      thisCart.dom.toggleTrigger = thisCart.dom.wrapper.querySelector(select.cart.toggleTrigger);
+
+    }
+
+    initActions(){
+      const thisCart = this;
+
+      thisCart.dom.toggleTrigger.addEventListener('click', function(event){
+        event.preventDefault();
+
+        thisCart.dom.wrapper.classList.toggle(classNames.cart.wrapperActive);
+
+      });
     }
   }
 
