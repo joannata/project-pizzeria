@@ -402,7 +402,7 @@
       console.log('adding product', menuProduct);
 
       /* [??] generate HTML based on template */
-      const generatedHTML = templates.menuProduct(menuProduct);
+      const generatedHTML = templates.cartProduct(menuProduct);
 
       /* create element using utils.createElementFromHTML */
       const generatedDOM = utils.createDOMFromHTML(generatedHTML);
