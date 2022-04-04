@@ -284,7 +284,7 @@
         params[paramId] = {
           label: param.label,
           options: {}
-        }
+        };
 
         // for every option in this category
         for(let optionId in param.options) {
