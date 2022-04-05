@@ -388,7 +388,7 @@
       thisCart.dom.productList = thisCart.dom.wrapper.querySelector(select.cart.productList);
       thisCart.dom.deliveryFee = thisCart.dom.wrapper.querySelector(select.cart.deliveryFee);
       thisCart.dom.subtotalPrice = thisCart.dom.wrapper.querySelector(select.cart.subtotalPrice);
-      thisCart.dom.totalPrice = thisCart.dom.wrapper.querySelector(select.cart.totalPrice);
+      thisCart.dom.totalPrice = thisCart.dom.wrapper.querySelectorAll(select.cart.totalPrice);
       thisCart.dom.totalNumber = thisCart.dom.wrapper.querySelector(select.cart.totalNumber);
     }
 
@@ -467,6 +467,11 @@
       console.log('indexOfCartProductToRemove', indexOfCartProductToRemove);
 
       thisCart.products.splice(indexOfCartProductToRemove, 1);
+      cartProductToRemove.dom.wrapper.remove();
+
+      if(thisCart.totalNumber == 0){
+        thisCart.deliveryFee == 0;
+      }
       
       thisCart.update();
 
