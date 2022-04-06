@@ -425,16 +425,13 @@
     add(menuProduct){
       const thisCart = this;
 
-      /* [??] generate HTML based on template */
+      /* generate HTML based on template */
       const generatedHTML = templates.cartProduct(menuProduct);
 
       /* create element using utils.createElementFromHTML */
       const generatedDOM = utils.createDOMFromHTML(generatedHTML);
 
-      /* [TO DELETE??] find menu container */
-      // const menuContainer = document.querySelector(select.containerOf.menu);
-
-      /* [??] add element to menu */
+      /* add element to menu */
       thisCart.dom.productList.appendChild(generatedDOM);
 
       thisCart.products.push(new CartProduct(menuProduct, generatedDOM));
@@ -597,8 +594,6 @@
 
       return productData;
     }
-
-
   }
 
   const app = {
