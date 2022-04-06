@@ -450,7 +450,10 @@
       }
 
       if(thisCart.totalNumber == 0){
-        thisCart.deliveryFee == 0;
+        thisCart.deliveryFee = 0;
+        thisCart.totalPrice = 0;
+      } else {
+        thisCart.totalPrice = thisCart.subtotalPrice + thisCart.deliveryFee;
       }
 
       thisCart.totalPrice = thisCart.subtotalPrice + thisCart.deliveryFee;
@@ -473,10 +476,6 @@
 
       thisCart.products.splice(indexOfCartProductToRemove, 1);
       cartProductToRemove.dom.wrapper.remove();
-
-      if(thisCart.totalNumber == 0){
-        thisCart.deliveryFee == 0;
-      }
       
       thisCart.update();
 
@@ -580,7 +579,7 @@
 
           /* execute initMenu method */
           thisApp.initMenu();
-          
+
         });
 
       console.log('thisApp.data', JSON.stringify(thisApp.data));
