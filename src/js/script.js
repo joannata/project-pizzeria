@@ -453,9 +453,6 @@
 
       if(thisCart.totalNumber == 0){
         thisCart.deliveryFee = 0;
-        thisCart.totalPrice = 0;
-      } else {
-        thisCart.totalPrice = thisCart.subtotalPrice + thisCart.deliveryFee;
       }
 
       thisCart.totalPrice = thisCart.subtotalPrice + thisCart.deliveryFee;
@@ -487,7 +484,6 @@
       const url = settings.db.url + '/' + settings.db.orders;
 
       const payload = {};
-      console.log('payload', payload);
 
       payload.address = thisCart.dom.address.value;
       payload.phone = thisCart.dom.phone.value;
@@ -509,7 +505,12 @@
         body: JSON.stringify(payload),
       };
       
-      fetch(url, options);
+      fetch(url, options)
+        .then(function (res){return res.json(); })
+        .then(function (res){
+          console.log(res);
+          alert('Thank you for your order!');
+        });
     }
 
   }
