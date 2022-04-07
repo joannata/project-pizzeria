@@ -489,9 +489,8 @@
       const payload = {};
       console.log('payload', payload);
 
-      // nie wiem, gdzie wstawić "value"
-      payload.address = thisCart.dom.address;
-      payload.phone = thisCart.dom.phone;
+      payload.address = thisCart.dom.address.value;
+      payload.phone = thisCart.dom.phone.value;
       payload.totalPrice = thisCart.totalPrice;
       payload.subtotalPrice = thisCart.subtotalPrice;
       payload.totalNumber = thisCart.totalNumber;
@@ -586,7 +585,7 @@
       const productData = {};
 
       productData.id = thisCartProduct.id;
-      productData.aumount = thisCartProduct.amount;
+      productData.amount = thisCartProduct.amount;
       productData.price = thisCartProduct.price;
       productData.priceSingle = thisCartProduct.priceSingle;
       productData.name = thisCartProduct.name;
