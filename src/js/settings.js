@@ -100,9 +100,9 @@ export const settings = {
   },
   // wyłączyć fragment poniżej?
   //db: {
-    //url: '//localhost:3131',
-    //products: 'products',
-    //orders: 'orders',
+  //url: '//localhost:3131',
+  //products: 'products',
+  //orders: 'orders',
   //},
   db: {
     url: '//localhost:3131',
