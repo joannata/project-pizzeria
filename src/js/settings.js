@@ -98,6 +98,7 @@ export const settings = {
   cart: {
     defaultDeliveryFee: 20,
   },
+  // wyłączyć fragment poniżej?
   //db: {
     //url: '//localhost:3131',
     //products: 'products',
