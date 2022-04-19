@@ -4,6 +4,7 @@ import Cart from './components/Cart.js';
 import Booking from './components/Booking.js';
 
 const app = {
+
   initBooking: function(){
     const thisApp = this;
 

@@ -55,6 +55,7 @@
   },
   "homepage": "https://github.com/joannata/project-pizzeria#readme",
   "dependencies": {
+    "flickity": "^3.0.0",
     "json-server": "^0.17.0"
   }
 }
